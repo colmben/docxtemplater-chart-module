@@ -9,8 +9,9 @@ module.exports = class ChartMaker
 					#{if @options.title then "" else "<c:autoTitleDeleted val=\"1\"/>"}
 					<c:plotArea>
 						<c:layout/>
-						<c:lineChart>
-							<c:grouping val="standard"/>
+						<c:radarChart>
+						<c:radarStyle val="marker"/>
+						<c:varyColors val="1"/>
 		"""
 
 	getFormatCode: () ->
@@ -26,16 +27,20 @@ module.exports = class ChartMaker
 				<c:tx>
 					<c:v>#{line.name}</c:v>
 				</c:tx>
+		"""
+		if (i==1)
+			result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
+
+		result += """
 				<c:marker>
 					<c:symbol val="none"/>
 				</c:marker>
 				<c:cat>
-
 					<c:#{@ref}>
 						<c:#{@cache}>
 							#{@getFormatCode()}
 							<c:ptCount val="#{line.data.length}"/>
-				
+
 		"""
 		for elem, i in line.data
 			result += """
@@ -81,6 +86,11 @@ module.exports = class ChartMaker
 		<c:axId val="#{@id1}"/>
 		#{@getScaling(@options.axis.x)}
 		<c:axPos val="b"/>
+
+		<c:delete val="0"/>
+    <c:majorGridlines/>
+                <c:majorTickMark val="cross"/>
+                <c:minorTickMark val="cross"/>
 		<c:tickLblPos val="nextTo"/>
 		<c:txPr>
 			<a:bodyPr/>
@@ -96,6 +106,7 @@ module.exports = class ChartMaker
 		<c:crosses val="autoZero"/>
 		<c:auto val="1"/>
 		<c:lblOffset val="100"/>
+    <c:noMultiLvlLbl val="1"/>
 		"""
 	getCatAx: () ->
 		return """
@@ -131,9 +142,17 @@ module.exports = class ChartMaker
 	getTemplateBottom: () ->
 		result = """
 							<c:marker val="1"/>
+                <c:dLbls>
+                    <c:showLegendKey val="0"/>
+                    <c:showVal val="0"/>
+                    <c:showCatName val="0"/>
+                    <c:showSerName val="0"/>
+                    <c:showPercent val="0"/>
+                    <c:showBubbleSize val="0"/>
+                </c:dLbls>
 							<c:axId val="#{@id1}"/>
 							<c:axId val="#{@id2}"/>
-						</c:lineChart>
+						</c:radarChart>
 		"""
 		switch @options.axis.x.type
 			when 'date'
@@ -145,9 +164,30 @@ module.exports = class ChartMaker
 							<c:axId val="#{@id2}"/>
 							#{@getScaling(@options.axis.y)}
 							<c:axPos val="l"/>
-							#{if @options.grid then "<c:majorGridlines/>" else ""}
-							<c:numFmt formatCode="General" sourceLinked="1"/>
-							<c:tickLblPos val="nextTo"/>
+							<c:delete val="0"/>
+							#{if @options.grid then "<c:majorGridlines>
+								<c:spPr>
+								<a:ln>
+								<a:solidFill>
+								<a:schemeClr val=\"bg1\">
+								<a:lumMod val=\"85000\"/>
+								</a:schemeClr>
+								\</a:solidFill>
+								\</a:ln>
+								\</c:spPr>
+								\</c:majorGridlines>" else ""}
+			<c:numFmt formatCode="General" sourceLinked="1"/>                <c:majorTickMark val="none"/>
+			<c:minorTickMark val="none"/>
+			<c:tickLblPos val="none"/>
+			<c:spPr>
+			<a:ln>
+			<a:solidFill>
+			<a:schemeClr val="bg1">
+			<a:lumMod val="75000"/>
+			</a:schemeClr>
+			</a:solidFill>
+			</a:ln>
+			</c:spPr>
 							<c:txPr>
 								<a:bodyPr/>
 								<a:lstStyle/>
@@ -160,7 +200,7 @@ module.exports = class ChartMaker
 							</c:txPr>
 							<c:crossAx val="#{@id1}"/>
 							<c:crosses val="autoZero"/>
-							<c:crossBetween val="between"/>
+							<c:crossBetween val="between"/>                <c:majorUnit val="1"/>
 						</c:valAx>
 					</c:plotArea>
 					<c:legend>

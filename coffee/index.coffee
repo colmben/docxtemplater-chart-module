@@ -75,7 +75,7 @@ class ChartModule
 			width: 5486400 / 9525,
 			height: 3200400 / 9525,
 			grid: true,
-			border: true,
+			border: false,
 			title: false, # works only for single-line charts
 			legend: {
 				position: 'r', # 'l', 'r', 'b', 't'
@@ -96,7 +96,7 @@ class ChartModule
 				y: {
 					orientation: 'minMax',
 					mix: undefined,
-					max: undefined
+					max: 5
 				}
 			}
 		}
@@ -125,7 +125,7 @@ class ChartModule
 
 		tag = templaterState.textInsideTag.substr(1) # tag to be replaced
 		chartData = scopeManager.getValueFromScope(tag) # data to build chart from
-		filename = tag
+		filename = tag + (this.chartManager.maxRid + 1)
 
 
 		imageRels = @chartManager.loadChartRels()
