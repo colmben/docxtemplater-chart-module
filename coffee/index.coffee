@@ -25,7 +25,7 @@ class ChartModule
 			gen = @manager.getInstance('gen');
 			@chartManager = new ChartManager(gen.zip, @renderingFileName)
 			@chartManager.loadChartRels();
-			
+
 		else if (event == 'rendered')
 			@finished()
 
@@ -37,13 +37,13 @@ class ChartModule
 			if templaterState.textInsideTag[0] == '$'
 				return @name
 		return null
-	
+
 	handle: (type, data) ->
 		if (type == 'replaceTag' and data == @name)
 			# console.log('handle')
 			@replaceTag()
 		return null
-	
+
 	finished: () ->
 
 	on: (event, data) ->
@@ -130,7 +130,7 @@ class ChartModule
 		return if !chartData?
 
 		# create a unique filename so we can have multiple charts from one tag, via the loop functionality in docxtemplater
-		# Note the +1 isn't really required, it just makes the number the same as the associated rel, handy for debugging the resulting docx	
+		# Note the +1 isn't really required, it just makes the number the same as the associated rel, handy for debugging the resulting docx
 		filename = tag + (this.chartManager.maxRid + 1);
 
 
@@ -149,9 +149,9 @@ class ChartModule
 		chart = new ChartMaker(gen.zip, options)
 		chart.makeChartFile(chartData.lines)
 		chart.writeFile(filename)
-		
-		
-		tagXml = @manager.getInstance('xmlTemplater').tagXml
+
+
+		tagXml = @manager.getInstance('xmlTemplater').fileTypeConfig.tagsXmlArray[0]
 
 		newText = @getChartXml({
 			chartID: chartId,
