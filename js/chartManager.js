@@ -37,14 +37,14 @@ module.exports = ChartManager = (function() {
     content = DocUtils.decode_utf8(file.asText());
     this.xmlDoc = DocUtils.Str2xml(content);
     RidArray = (function() {
-      var _i, _len, _ref, _results;
-      _ref = this.xmlDoc.getElementsByTagName('Relationship');
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        tag = _ref[_i];
-        _results.push(parseInt(tag.getAttribute("Id").substr(3)));
+      var i, len, ref, results;
+      ref = this.xmlDoc.getElementsByTagName('Relationship');
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        tag = ref[i];
+        results.push(parseInt(tag.getAttribute("Id").substr(3)));
       }
-      return _results;
+      return results;
     }).call(this);
     this.maxRid = DocUtils.maxArray(RidArray);
     this.chartRels = [];

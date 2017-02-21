@@ -12,7 +12,7 @@ var paths = {
     js:'js/'
 };
 
-gulp.task('allCoffee', function () {
+gulp.task('allCoffee', function (done) {
 	gulp.src(paths.coffee)
         .pipe(coffee({bare:true}))
         .pipe(gulp.dest(paths.js))
@@ -25,6 +25,7 @@ gulp.task('allCoffee', function () {
 
 	a=a
 		.pipe(gulp.dest(paths.testDirectory));
+    done();
 });
 
 gulp.task('watch', function () {
@@ -51,4 +52,6 @@ gulp.task('coffeeTest', function() {
 	return a;
 });
 
-gulp.task('default',['coffeeTest','watch']);
+gulp.task('default',gulp.series('coffeeTest' ,'watch', function(done) {
+    done();
+}));

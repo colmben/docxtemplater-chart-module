@@ -23,8 +23,8 @@ ChartModule = (function() {
   	 * @param  {Object} @options params for the module
    */
 
-  function ChartModule(options) {
-    this.options = options != null ? options : {};
+  function ChartModule(options1) {
+    this.options = options1 != null ? options1 : {};
   }
 
   ChartModule.prototype.handleEvent = function(event, eventData) {
@@ -127,7 +127,7 @@ ChartModule = (function() {
   };
 
   ChartModule.prototype.convertUnixTo1900 = function(chartData, axName) {
-    var convertOption, data, line, unixTo1900, _i, _j, _len, _len1, _ref, _ref1;
+    var convertOption, data, i, j, len, len1, line, ref, ref1, unixTo1900;
     unixTo1900 = function(value) {
       return Math.round(value / 86400 + 25569);
     };
@@ -138,12 +138,12 @@ ChartModule = (function() {
     };
     convertOption('min');
     convertOption('max');
-    _ref = chartData.lines;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      line = _ref[_i];
-      _ref1 = line.data;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        data = _ref1[_j];
+    ref = chartData.lines;
+    for (i = 0, len = ref.length; i < len; i++) {
+      line = ref[i];
+      ref1 = line.data;
+      for (j = 0, len1 = ref1.length; j < len1; j++) {
+        data = ref1[j];
         data[axName] = unixTo1900(data[axName]);
       }
     }
@@ -176,7 +176,7 @@ ChartModule = (function() {
     chart = new ChartMaker(gen.zip, options);
     chart.makeChartFile(chartData.lines);
     chart.writeFile(filename);
-    tagXml = this.manager.getInstance('xmlTemplater').tagXml;
+    tagXml = this.manager.getInstance('xmlTemplater').fileTypeConfig.tagsXmlArray[0];
     newText = this.getChartXml({
       chartID: chartId,
       width: this.convertPixelsToEmus(options.width),
@@ -185,9 +185,9 @@ ChartModule = (function() {
     return this.replaceBy(newText, tagXml);
   };
 
-  ChartModule.prototype.getChartXml = function(_arg) {
+  ChartModule.prototype.getChartXml = function(arg) {
     var chartID, height, width;
-    chartID = _arg.chartID, width = _arg.width, height = _arg.height;
+    chartID = arg.chartID, width = arg.width, height = arg.height;
     return "<w:drawing>\n	<wp:inline distB=\"0\" distL=\"0\" distR=\"0\" distT=\"0\">\n		<wp:extent cx=\"" + width + "\" cy=\"" + height + "\"/>\n		<wp:effectExtent b=\"0\" l=\"0\" r=\"0\" t=\"0\"/>\n		<wp:docPr id=\"1\" name=\"Диаграмма 1\"/>\n		<wp:cNvGraphicFramePr/>\n		<a:graphic xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\">\n			<a:graphicData uri=\"http://schemas.openxmlformats.org/drawingml/2006/chart\">\n				<c:chart r:id=\"rId" + chartID + "\" xmlns:c=\"http://schemas.openxmlformats.org/drawingml/2006/chart\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\"/>\n			</a:graphicData>\n		</a:graphic>\n	</wp:inline>\n</w:drawing>";
   };
 
