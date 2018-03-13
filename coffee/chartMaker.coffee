@@ -9,7 +9,7 @@ module.exports = class ChartMaker
 					#{if @options.title then "" else "<c:autoTitleDeleted val=\"1\"/>"}
 					<c:plotArea>
 						<c:layout/>
-						<c:barChart>
+						<c:radarChart>
 						<c:radarStyle val="marker"/>
 						<c:varyColors val="1"/>
 		"""
@@ -152,7 +152,7 @@ module.exports = class ChartMaker
                 </c:dLbls>
 							<c:axId val="#{@id1}"/>
 							<c:axId val="#{@id2}"/>
-						</c:barChart>
+						</c:radarChart>
 		"""
 		switch @options.axis.x.type
 			when 'date'

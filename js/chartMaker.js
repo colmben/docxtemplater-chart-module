@@ -4,7 +4,7 @@ DocUtils = require('./docUtils');
 
 module.exports = ChartMaker = (function() {
   ChartMaker.prototype.getTemplateTop = function(chartType) {
-    return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<c:chartSpace xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:c=\"http://schemas.openxmlformats.org/drawingml/2006/chart\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\">\n	<c:lang val=\"ru-RU\"/>\n	<c:chart>\n		" + (this.options.title ? "" : "<c:autoTitleDeleted val=\"1\"/>") + "\n		<c:plotArea>\n			<c:layout/>\n			<c:barChart>\n			<c:radarStyle val=\"marker\"/>\n			<c:varyColors val=\"1\"/>";
+    return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<c:chartSpace xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:c=\"http://schemas.openxmlformats.org/drawingml/2006/chart\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\">\n	<c:lang val=\"ru-RU\"/>\n	<c:chart>\n		" + (this.options.title ? "" : "<c:autoTitleDeleted val=\"1\"/>") + "\n		<c:plotArea>\n			<c:layout/>\n			<c:radarChart>\n			<c:radarStyle val=\"marker\"/>\n			<c:varyColors val=\"1\"/>";
   };
 
   ChartMaker.prototype.getFormatCode = function() {
@@ -67,7 +67,7 @@ module.exports = ChartMaker = (function() {
 
   ChartMaker.prototype.getTemplateBottom = function(chartType) {
     var result;
-    result = "	<c:marker val=\"1\"/>\n                <c:dLbls>\n                    <c:showLegendKey val=\"0\"/>\n                    <c:showVal val=\"0\"/>\n                    <c:showCatName val=\"0\"/>\n                    <c:showSerName val=\"0\"/>\n                    <c:showPercent val=\"0\"/>\n                    <c:showBubbleSize val=\"0\"/>\n                </c:dLbls>\n	<c:axId val=\"" + this.id1 + "\"/>\n	<c:axId val=\"" + this.id2 + "\"/>\n</c:barChart>";
+    result = "	<c:marker val=\"1\"/>\n                <c:dLbls>\n                    <c:showLegendKey val=\"0\"/>\n                    <c:showVal val=\"0\"/>\n                    <c:showCatName val=\"0\"/>\n                    <c:showSerName val=\"0\"/>\n                    <c:showPercent val=\"0\"/>\n                    <c:showBubbleSize val=\"0\"/>\n                </c:dLbls>\n	<c:axId val=\"" + this.id1 + "\"/>\n	<c:axId val=\"" + this.id2 + "\"/>\n</c:radarChart>";
     switch (this.options.axis.x.type) {
       case 'date':
         result += this.getDateAx();
