@@ -3,8 +3,8 @@ var ChartMaker, DocUtils;
 DocUtils = require('./docUtils');
 
 module.exports = ChartMaker = (function() {
-  ChartMaker.prototype.getTemplateTop = function() {
-    return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<c:chartSpace xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:c=\"http://schemas.openxmlformats.org/drawingml/2006/chart\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\">\n	<c:lang val=\"ru-RU\"/>\n	<c:chart>\n		" + (this.options.title ? "" : "<c:autoTitleDeleted val=\"1\"/>") + "\n		<c:plotArea>\n			<c:layout/>\n			<c:radarChart>\n			<c:radarStyle val=\"marker\"/>\n			<c:varyColors val=\"1\"/>";
+  ChartMaker.prototype.getTemplateTop = function(chartType) {
+    return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<c:chartSpace xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:c=\"http://schemas.openxmlformats.org/drawingml/2006/chart\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\">\n	<c:lang val=\"ru-RU\"/>\n	<c:chart>\n		" + (this.options.title ? "" : "<c:autoTitleDeleted val=\"1\"/>") + "\n		<c:plotArea>\n			<c:layout/>\n			<c:barChart>\n			<c:radarStyle val=\"marker\"/>\n			<c:varyColors val=\"1\"/>";
   };
 
   ChartMaker.prototype.getFormatCode = function() {
@@ -15,7 +15,7 @@ module.exports = ChartMaker = (function() {
     }
   };
 
-  ChartMaker.prototype.getLineTemplate = function(line, i) {
+  ChartMaker.prototype.getLineTemplate = function(chartType, line, i) {
     var elem, j, k, len, len1, ref, ref1, result;
     result = "<c:ser>\n	<c:idx val=\"" + i + "\"/>\n	<c:order val=\"" + i + "\"/>\n	<c:tx>\n		<c:v>" + line.name + "</c:v>\n	</c:tx>";
     if (i === 1) {
@@ -65,9 +65,9 @@ module.exports = ChartMaker = (function() {
     }
   };
 
-  ChartMaker.prototype.getTemplateBottom = function() {
+  ChartMaker.prototype.getTemplateBottom = function(chartType) {
     var result;
-    result = "	<c:marker val=\"1\"/>\n                <c:dLbls>\n                    <c:showLegendKey val=\"0\"/>\n                    <c:showVal val=\"0\"/>\n                    <c:showCatName val=\"0\"/>\n                    <c:showSerName val=\"0\"/>\n                    <c:showPercent val=\"0\"/>\n                    <c:showBubbleSize val=\"0\"/>\n                </c:dLbls>\n	<c:axId val=\"" + this.id1 + "\"/>\n	<c:axId val=\"" + this.id2 + "\"/>\n</c:radarChart>";
+    result = "	<c:marker val=\"1\"/>\n                <c:dLbls>\n                    <c:showLegendKey val=\"0\"/>\n                    <c:showVal val=\"0\"/>\n                    <c:showCatName val=\"0\"/>\n                    <c:showSerName val=\"0\"/>\n                    <c:showPercent val=\"0\"/>\n                    <c:showBubbleSize val=\"0\"/>\n                </c:dLbls>\n	<c:axId val=\"" + this.id1 + "\"/>\n	<c:axId val=\"" + this.id2 + "\"/>\n</c:barChart>";
     switch (this.options.axis.x.type) {
       case 'date':
         result += this.getDateAx();
@@ -91,14 +91,14 @@ module.exports = ChartMaker = (function() {
     }
   }
 
-  ChartMaker.prototype.makeChartFile = function(lines) {
+  ChartMaker.prototype.makeChartFile = function(chartType, lines) {
     var i, j, len, line, result;
-    result = this.getTemplateTop();
+    result = this.getTemplateTop(chartType);
     for (i = j = 0, len = lines.length; j < len; i = ++j) {
       line = lines[i];
-      result += this.getLineTemplate(line, i);
+      result += this.getLineTemplate(chartType, line, i);
     }
-    result += this.getTemplateBottom();
+    result += this.getTemplateBottom(chartType);
     this.chartContent = result;
     return this.chartContent;
   };

@@ -1,6 +1,6 @@
 DocUtils = require('./docUtils')
 module.exports = class ChartMaker
-	getTemplateTop: () ->
+	getTemplateTop: (chartType) ->
 		return """
 			<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 			<c:chartSpace xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
@@ -9,7 +9,7 @@ module.exports = class ChartMaker
 					#{if @options.title then "" else "<c:autoTitleDeleted val=\"1\"/>"}
 					<c:plotArea>
 						<c:layout/>
-						<c:radarChart>
+						<c:barChart>
 						<c:radarStyle val="marker"/>
 						<c:varyColors val="1"/>
 		"""
@@ -19,7 +19,7 @@ module.exports = class ChartMaker
 			return "<c:formatCode>m/d/yyyy</c:formatCode>" 
 		else 
 			return ""
-	getLineTemplate: (line, i) ->
+	getLineTemplate: (chartType, line, i) ->
 		result = """
 			<c:ser>
 				<c:idx val="#{i}"/>
@@ -139,7 +139,7 @@ module.exports = class ChartMaker
 			"""
 		else
 			return ''
-	getTemplateBottom: () ->
+	getTemplateBottom: (chartType) ->
 		result = """
 							<c:marker val="1"/>
                 <c:dLbls>
@@ -152,7 +152,7 @@ module.exports = class ChartMaker
                 </c:dLbls>
 							<c:axId val="#{@id1}"/>
 							<c:axId val="#{@id2}"/>
-						</c:radarChart>
+						</c:barChart>
 		"""
 		switch @options.axis.x.type
 			when 'date'
@@ -222,11 +222,11 @@ module.exports = class ChartMaker
 			@cache = "strCache"
 			
 
-	makeChartFile: (lines) ->
-		result = @getTemplateTop()
+	makeChartFile: (chartType, lines) ->
+		result = @getTemplateTop(chartType)
 		for line, i in lines
-			result += @getLineTemplate(line, i)
-		result += @getTemplateBottom()
+			result += @getLineTemplate(chartType, line, i)
+		result += @getTemplateBottom(chartType)
 		@chartContent = result
 		return @chartContent
 
