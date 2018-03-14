@@ -693,7 +693,7 @@ module.exports = class ChartMaker
 
 	makeChartFile: (chart) ->
 		result = @getTemplateTop(chart.chartType, chart.title1, chart.title2)
-		for line, i in lines
+		for line, i in chart.lines
 			result += @getLineTemplate(chart.chartType, line, i)
 		result += @getTemplateBottom(chart.chartType)
 		@chartContent = result

@@ -140,10 +140,11 @@ module.exports = ChartMaker = (function() {
   }
 
   ChartMaker.prototype.makeChartFile = function(chart) {
-    var i, j, len, line, result;
+    var i, j, len, line, ref, result;
     result = this.getTemplateTop(chart.chartType, chart.title1, chart.title2);
-    for (i = j = 0, len = lines.length; j < len; i = ++j) {
-      line = lines[i];
+    ref = chart.lines;
+    for (i = j = 0, len = ref.length; j < len; i = ++j) {
+      line = ref[i];
       result += this.getLineTemplate(chart.chartType, line, i);
     }
     result += this.getTemplateBottom(chart.chartType);
