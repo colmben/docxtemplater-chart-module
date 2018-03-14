@@ -174,7 +174,7 @@ ChartModule = (function() {
       }
     }
     chart = new ChartMaker(gen.zip, options);
-    chart.makeChartFile(chartData.chartType, chartData.lines);
+    chart.makeChartFile(chartData);
     chart.writeFile(filename);
     tagXml = this.manager.getInstance('xmlTemplater').fileTypeConfig.tagsXmlArray[0];
     newText = this.getChartXml({

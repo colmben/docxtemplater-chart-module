@@ -1,6 +1,6 @@
 DocUtils = require('./docUtils')
 module.exports = class ChartMaker
-	getTemplateTop: (chartType) ->
+	getTemplateTop: (chartType, title1, title2) ->
 		switch chartType
 			#**********TEMPLATE TOP RADAR*****************************
 			when 'radar'
@@ -691,11 +691,11 @@ module.exports = class ChartMaker
 			@cache = "strCache"
 			
 
-	makeChartFile: (chartType, lines) ->
-		result = @getTemplateTop(chartType)
+	makeChartFile: (chart) ->
+		result = @getTemplateTop(chart.chartType, chart.title1, chart.title2)
 		for line, i in lines
-			result += @getLineTemplate(chartType, line, i)
-		result += @getTemplateBottom(chartType)
+			result += @getLineTemplate(chart.chartType, line, i)
+		result += @getTemplateBottom(chart.chartType)
 		@chartContent = result
 		return @chartContent
 

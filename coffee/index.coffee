@@ -147,7 +147,7 @@ class ChartModule
 				chartData = @convertUnixTo1900(chartData, name)
 
 		chart = new ChartMaker(gen.zip, options)
-		chart.makeChartFile(chartData.chartType, chartData.lines)
+		chart.makeChartFile(chartData)
 		chart.writeFile(filename)
 
 

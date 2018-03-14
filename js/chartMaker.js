@@ -3,7 +3,7 @@ var ChartMaker, DocUtils;
 DocUtils = require('./docUtils');
 
 module.exports = ChartMaker = (function() {
-  ChartMaker.prototype.getTemplateTop = function(chartType) {
+  ChartMaker.prototype.getTemplateTop = function(chartType, title1, title2) {
     switch (chartType) {
       case 'radar':
         return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<c:chartSpace xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:c=\"http://schemas.openxmlformats.org/drawingml/2006/chart\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\">\n	<c:lang val=\"ru-RU\"/>\n	<c:chart>\n		" + (this.options.title ? "" : "<c:autoTitleDeleted val=\"1\"/>") + "\n		<c:plotArea>\n			<c:layout/>\n			<c:radarChart>\n			<c:radarStyle val=\"marker\"/>\n			<c:varyColors val=\"1\"/>";
@@ -139,14 +139,14 @@ module.exports = ChartMaker = (function() {
     }
   }
 
-  ChartMaker.prototype.makeChartFile = function(chartType, lines) {
+  ChartMaker.prototype.makeChartFile = function(chart) {
     var i, j, len, line, result;
-    result = this.getTemplateTop(chartType);
+    result = this.getTemplateTop(chart.chartType, chart.title1, chart.title2);
     for (i = j = 0, len = lines.length; j < len; i = ++j) {
       line = lines[i];
-      result += this.getLineTemplate(chartType, line, i);
+      result += this.getLineTemplate(chart.chartType, line, i);
     }
-    result += this.getTemplateBottom(chartType);
+    result += this.getTemplateBottom(chart.chartType);
     this.chartContent = result;
     return this.chartContent;
   };
