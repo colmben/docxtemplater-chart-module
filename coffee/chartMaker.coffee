@@ -62,11 +62,11 @@ module.exports = class ChartMaker
 											</a:pPr>
 											<a:r>
 												<a:rPr lang="en-US" sz="1000"/>
-												<a:t>Net Cash</a:t>
+												<a:t>#{title1}</a:t>
 											</a:r>
 											<a:r>
 												<a:rPr lang="en-US" sz="1000" baseline="0"/>
-												<a:t> / Total Assets</a:t>
+												<a:t>#{title2}</a:t>
 											</a:r>
 											<a:endParaRPr lang="en-US" sz="1000"/>
 										</a:p>
@@ -191,7 +191,7 @@ module.exports = class ChartMaker
 				result += """
 					<c:spPr>
 						<a:solidFill>
-							<a:schemeClr val="accent1"/>
+							<a:schemeClr val="accent#{i}"/>
 						</a:solidFill>
 						<a:ln>
 							<a:noFill/>
