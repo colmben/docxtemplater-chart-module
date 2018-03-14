@@ -119,19 +119,19 @@ module.exports = class ChartMaker
 			return ""
 
 
-	getLineTemplate: (chartType, line, i) ->
+	getLineTemplate: (chartType, line, lineCounter) ->
 		switch chartType
 			#**********LINE TEMPLATE RADAR*****************************
 			when 'radar'
 				result = """
 					<c:ser>
-						<c:idx val="#{i}"/>
-						<c:order val="#{i}"/>
+						<c:idx val="#{lineCounter}"/>
+						<c:order val="#{lineCounter}"/>
 						<c:tx>
 							<c:v>#{line.name}</c:v>
 						</c:tx>
 				"""
-				if (i==1)
+				if (lineCounter==1)
 					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
 
 				result += """
@@ -179,19 +179,19 @@ module.exports = class ChartMaker
 			when 'bar'
 				result = """
 					<c:ser>
-						<c:idx val="#{i}"/>
-						<c:order val="#{i}"/>
+						<c:idx val="#{lineCounter}"/>
+						<c:order val="#{lineCounter}"/>
 						<c:tx>
 							<c:v>#{line.name}</c:v>
 						</c:tx>
 				"""
-#				if (i==1)
+#				if (lineCounter==1)
 #					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
 
 				result += """
 					<c:spPr>
 						<a:solidFill>
-							<a:schemeClr val="accent#{i}"/>
+							<a:schemeClr val="accent#{lineCounter + 1}"/>
 						</a:solidFill>
 						<a:ln>
 							<a:noFill/>
