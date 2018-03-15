@@ -96,7 +96,7 @@ class ChartModule
 				y: {
 					orientation: 'minMax',
 					mix: undefined,
-					max: 5
+					max: undefined
 				}
 			}
 		}

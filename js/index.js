@@ -117,7 +117,7 @@ ChartModule = (function() {
         y: {
           orientation: 'minMax',
           mix: void 0,
-          max: 5
+          max: void 0
         }
       }
     };
