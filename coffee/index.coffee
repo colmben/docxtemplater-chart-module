@@ -52,9 +52,9 @@ class ChartModule
 
 	replaceBy: (text, outsideElement) ->
 		console.log('In replaceBy, text, outsideElement',text, outsideElement)
-		console.log('Sub content :', new SubContent(xmlTemplater.content))
 		xmlTemplater = @manager.getInstance('xmlTemplater')
 		templaterState = @manager.getInstance('templaterState')
+		console.log('Sub content :', new SubContent(xmlTemplater.content))
 		subContent = new SubContent(xmlTemplater.content)
 			.getInnerTag(templaterState)
 			.getOuterXml(outsideElement)
