@@ -179,6 +179,7 @@ ChartModule = (function() {
     chart.makeChartFile(chartData);
     chart.writeFile(filename);
     tagXml = this.manager.getInstance('xmlTemplater').fileTypeConfig.tagsXmlArray[0];
+    console.log("Chart tagXml : ", tagXml);
     newText = this.getChartXml({
       chartID: chartId,
       width: this.convertPixelsToEmus(options.width),
