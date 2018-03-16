@@ -68,6 +68,7 @@ ChartModule = (function() {
   ChartModule.prototype.replaceBy = function(text, outsideElement) {
     var subContent, templaterState, xmlTemplater;
     console.log('In replaceBy, text, outsideElement', text, outsideElement);
+    console.log('Sub content :', new SubContent(xmlTemplater.content));
     xmlTemplater = this.manager.getInstance('xmlTemplater');
     templaterState = this.manager.getInstance('templaterState');
     subContent = new SubContent(xmlTemplater.content).getInnerTag(templaterState).getOuterXml(outsideElement);
