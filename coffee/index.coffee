@@ -154,7 +154,7 @@ class ChartModule
 
 
 		tagXml = @manager.getInstance('xmlTemplater').fileTypeConfig.tagsXmlArray[0]
-		console.log("Chart tagXmlArray : ", tagsXmlArray)
+		console.log("Chart tagXmlArray : ", @manager.getInstance('xmlTemplater').fileTypeConfig.tagsXmlArray)
 
 		newText = @getChartXml({
 			chartID: chartId,
