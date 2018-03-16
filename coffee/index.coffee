@@ -51,11 +51,13 @@ class ChartModule
 			throw data
 
 	replaceBy: (text, outsideElement) ->
+		console.log('In replaceBy, text, outsideElement',text, outsideElement)
 		xmlTemplater = @manager.getInstance('xmlTemplater')
 		templaterState = @manager.getInstance('templaterState')
 		subContent = new SubContent(xmlTemplater.content)
 			.getInnerTag(templaterState)
 			.getOuterXml(outsideElement)
+		console.log('In replaceBy, subContent',subContent)
 		xmlTemplater.replaceXml(subContent,text)
 
 	convertPixelsToEmus: (pixel) ->
