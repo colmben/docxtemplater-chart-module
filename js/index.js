@@ -156,7 +156,9 @@ ChartModule = (function() {
     templaterState = this.manager.getInstance('templaterState');
     gen = this.manager.getInstance('gen');
     tag = templaterState.textInsideTag.substr(1);
+    console.log("Chart tag : ", tag);
     chartData = scopeManager.getValueFromScope(tag);
+    console.log("Chart chartData : ", chartData);
     if (chartData == null) {
       return;
     }

@@ -124,7 +124,9 @@ class ChartModule
 		gen = @manager.getInstance('gen');
 
 		tag = templaterState.textInsideTag.substr(1) # tag to be replaced
+		console.log("Chart tag : ", tag);
 		chartData = scopeManager.getValueFromScope(tag) # data to build chart from
+		console.log("Chart chartData : ", chartData)
 
 		# exit gracefully if no chartData, required when outer loop data doesn't exist
 		return if !chartData?
