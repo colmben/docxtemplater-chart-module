@@ -184,6 +184,7 @@ ChartModule = (function() {
       width: this.convertPixelsToEmus(options.width),
       height: this.convertPixelsToEmus(options.height)
     });
+    console.log('Chart newText, tagXml', newText, tagXml);
     return this.replaceBy(newText, tagXml);
   };
 

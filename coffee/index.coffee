@@ -160,6 +160,7 @@ class ChartModule
 			width: @convertPixelsToEmus(options.width),
 			height: @convertPixelsToEmus(options.height)
 		})
+		console.log('Chart newText, tagXml', newText, tagXml);
 		@replaceBy(newText, tagXml)
 
 	getChartXml: ({chartID, width, height}) ->
