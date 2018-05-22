@@ -685,7 +685,6 @@ module.exports = class ChartMaker
 					<c:cat>
 						<c:strRef>
 							<c:strCache>
-									<c:formatCode>General</c:formatCode>
 								<c:ptCount val="#{line.data.length}"/>
 
 				"""
@@ -1392,7 +1391,7 @@ module.exports = class ChartMaker
 				<a:endParaRPr lang="en-US"/>
 			</a:p>
 		</c:txPr>
-										</c:chartSpace>
+		</c:chartSpace>
 			"""
 		#*******************************************************
 		return result
