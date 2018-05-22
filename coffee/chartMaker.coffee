@@ -399,7 +399,7 @@ module.exports = class ChartMaker
 					<c:spPr>
 						<a:ln w="28575" cap="rnd">
 							<a:solidFill>
-								<a:schemeClr val="accent3"/>
+								<a:schemeClr val="accent1"/>
 							</a:solidFill>
 							<a:round/>
 						</a:ln>
@@ -441,12 +441,6 @@ module.exports = class ChartMaker
 								</c:numCache>
 							</c:numRef>
 						</c:val>
-						<c:extLst>
-							<c:ext uri="{C3380CC4-5D6E-409C-BE32-E72D297353CC}"
-								xmlns:c16="http://schemas.microsoft.com/office/drawing/2014/chart">
-								<c16:uniqueId val="{00000000-9819-4A27-9D24-58E0D8F9109B}"/>
-							</c:ext>
-						</c:extLst>
 					</c:ser>
 				"""
 		#*******************************************************
@@ -561,7 +555,6 @@ module.exports = class ChartMaker
 
 						<c:delete val="0"/>
 										<c:axPos val="b"/>
-										<c:numFmt formatCode="General" sourceLinked="1"/>
 										<c:majorTickMark val="out"/>
 										<c:minorTickMark val="none"/>
 										<c:tickLblPos val="nextTo"/>
