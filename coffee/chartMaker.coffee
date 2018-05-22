@@ -389,7 +389,7 @@ module.exports = class ChartMaker
 						<c:idx val="#{lineCounter}"/>
 						<c:order val="#{lineCounter}"/>
 						<c:tx>
-							<c:v>#{line.name}</c:v>
+							<c:v>Series 1</c:v>
 						</c:tx>
 				"""
 				#				if (lineCounter==1)
