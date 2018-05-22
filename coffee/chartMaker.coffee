@@ -388,16 +388,9 @@ module.exports = class ChartMaker
 					<c:ser>
 						<c:idx val="#{lineCounter}"/>
 						<c:order val="#{lineCounter}"/>
-					<c:tx>
-						<c:strRef>
-							<c:strCache>
-								<c:ptCount val="1"/>
-								<c:pt idx="0">
-									<c:v>Series 1</c:v>
-								</c:pt>
-							</c:strCache>
-						</c:strRef>
-					</c:tx>
+						<c:tx>
+							<c:v>#{line.name}</c:v>
+						</c:tx>
 				"""
 				#				if (lineCounter==1)
 				#					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
