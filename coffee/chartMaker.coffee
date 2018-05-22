@@ -629,39 +629,39 @@ module.exports = class ChartMaker
 							<c:axPos val="b"/>
 
 						<c:delete val="0"/>
-										<c:axPos val="b"/>
-										<c:majorTickMark val="none"/>
-										<c:minorTickMark val="none"/>
-										<c:tickLblPos val="none"/>
-										<c:spPr>
-											<a:noFill/>
-											<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
-												<a:solidFill>
-													<a:schemeClr val="tx1">
-														<a:lumMod val="15000"/>
-														<a:lumOff val="85000"/>
-													</a:schemeClr>
-												</a:solidFill>
-												<a:round/>
-											</a:ln>
-											<a:effectLst/>
-										</c:spPr>
-										<c:txPr>
-											<a:bodyPr rot="-60000000" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
-											<a:p>
-												<a:pPr>
-													<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
-														<a:solidFill>
-															<a:schemeClr val="tx1"/>
-														</a:solidFill>
-														<a:latin typeface="+mn-lt"/>
-														<a:ea typeface="+mn-ea"/>
-														<a:cs typeface="+mn-cs"/>
-													</a:defRPr>
-												</a:pPr>
-												<a:endParaRPr lang="en-US"/>
-											</a:p>
-										</c:txPr>
+						<c:majorTickMark val="none"/>
+						<c:minorTickMark val="none"/>
+						<c:tickLblPos val="none"/>
+						<c:spPr>
+							<a:noFill/>
+							<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
+								<a:solidFill>
+									<a:schemeClr val="tx1">
+										<a:lumMod val="15000"/>
+										<a:lumOff val="85000"/>
+									</a:schemeClr>
+								</a:solidFill>
+								<a:round/>
+							</a:ln>
+							<a:effectLst/>
+						</c:spPr>
+						<c:txPr>
+							<a:bodyPr rot="-60000000" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
+							<a:lstStyle/>
+							<a:p>
+								<a:pPr>
+									<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
+										<a:solidFill>
+											<a:schemeClr val="tx1"/>
+										</a:solidFill>
+										<a:latin typeface="+mn-lt"/>
+										<a:ea typeface="+mn-ea"/>
+										<a:cs typeface="+mn-cs"/>
+									</a:defRPr>
+								</a:pPr>
+								<a:endParaRPr lang="en-US"/>
+							</a:p>
+						</c:txPr>
 							<c:crossAx val="#{@id2}"/>
 							<c:crosses val="autoZero"/>
 							<c:auto val="1"/>
