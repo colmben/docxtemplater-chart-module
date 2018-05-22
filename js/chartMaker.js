@@ -61,7 +61,7 @@ module.exports = ChartMaker = (function() {
         result += "			</c:numCache>\n		</c:numRef>\n	</c:val>\n	<c:extLst>\n		<c:ext uri=\"{C3380CC4-5D6E-409C-BE32-E72D297353CC}\"\n			xmlns:c16=\"http://schemas.microsoft.com/office/drawing/2014/chart\">\n			<c16:uniqueId val=\"{00000000-9819-4A27-9D24-58E0D8F9109B}\"/>\n		</c:ext>\n	</c:extLst>\n</c:ser>";
         break;
       case 'line':
-        result = "<c:ser>\n	<c:idx val=\"" + lineCounter + "\"/>\n	<c:order val=\"" + lineCounter + "\"/>\n	<c:tx>\n		<c:v>Series 1</c:v>\n	</c:tx>";
+        result = "<c:ser>\n	<c:idx val=\"" + lineCounter + "\"/>\n	<c:order val=\"" + lineCounter + "\"/>\n<c:tx>\n	<c:strRef>\n		<c:strCache>\n			<c:ptCount val=\"1\"/>\n			<c:pt idx=\"0\">\n				<c:v>Series 1</c:v>\n			</c:pt>\n		</c:strCache>\n	</c:strRef>\n</c:tx>";
         result += "<c:spPr>\n	<a:ln w=\"28575\" cap=\"rnd\">\n		<a:solidFill>\n			<a:schemeClr val=\"accent1\"/>\n		</a:solidFill>\n		<a:round/>\n	</a:ln>\n	<a:effectLst/>\n</c:spPr>\n<c:marker>\n	<c:symbol val=\"none\"/>\n</c:marker>\n<c:cat>\n	<c:" + this.ref + ">\n		<c:" + this.cache + ">\n			" + (this.getFormatCode()) + "\n			<c:ptCount val=\"" + line.data.length + "\"/>\n";
         ref4 = line.data;
         for (i = n = 0, len4 = ref4.length; n < len4; i = ++n) {
