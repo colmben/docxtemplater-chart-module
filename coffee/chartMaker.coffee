@@ -127,10 +127,10 @@ module.exports = class ChartMaker
 							xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
 							<mc:Choice Requires="c14"
 								xmlns:c14="http://schemas.microsoft.com/office/drawing/2007/8/2/chart">
-								<c14:style val="105"/>
+								<c14:style val="102"/>
 							</mc:Choice>
 							<mc:Fallback>
-								<c:style val="5"/>
+								<c:style val="2"/>
 							</mc:Fallback>
 						</mc:AlternateContent>
 						<c:chart>
@@ -141,9 +141,12 @@ module.exports = class ChartMaker
 										<a:lstStyle/>
 										<a:p>
 											<a:pPr>
-												<a:defRPr sz="1400" b="0" i="0" u="none" strike="noStrike" kern="1200" spc="0" baseline="0">
+												<a:defRPr sz="1000" b="0" i="0" u="none" strike="noStrike" kern="1200" spc="0" baseline="0">
 													<a:solidFill>
-														<a:schemeClr val="tx1"/>
+														<a:schemeClr val="tx1">
+															<a:lumMod val="65000"/>
+															<a:lumOff val="35000"/>
+														</a:schemeClr>
 													</a:solidFill>
 													<a:latin typeface="+mn-lt"/>
 													<a:ea typeface="+mn-ea"/>
@@ -151,9 +154,14 @@ module.exports = class ChartMaker
 												</a:defRPr>
 											</a:pPr>
 											<a:r>
-												<a:rPr lang="en-IE"/>
+												<a:rPr lang="en-US" sz="1000"/>
 												<a:t>#{title1}</a:t>
 											</a:r>
+											<a:r>
+												<a:rPr lang="en-US" sz="1000" baseline="0"/>
+												<a:t>#{title2}</a:t>
+											</a:r>
+											<a:endParaRPr lang="en-US" sz="1000"/>
 										</a:p>
 									</c:rich>
 								</c:tx>
@@ -170,9 +178,12 @@ module.exports = class ChartMaker
 									<a:lstStyle/>
 									<a:p>
 										<a:pPr>
-											<a:defRPr sz="1400" b="0" i="0" u="none" strike="noStrike" kern="1200" spc="0" baseline="0">
+											<a:defRPr sz="1000" b="0" i="0" u="none" strike="noStrike" kern="1200" spc="0" baseline="0">
 												<a:solidFill>
-													<a:schemeClr val="tx1"/>
+													<a:schemeClr val="tx1">
+														<a:lumMod val="65000"/>
+														<a:lumOff val="35000"/>
+													</a:schemeClr>
 												</a:solidFill>
 												<a:latin typeface="+mn-lt"/>
 												<a:ea typeface="+mn-ea"/>
@@ -187,7 +198,8 @@ module.exports = class ChartMaker
 							<c:plotArea>
 								<c:layout/>
 								<c:barChart>
-									<c:grouping val="standard"/>
+									<c:barDir val="col"/>
+									<c:grouping val="clustered"/>
 									<c:varyColors val="0"/>
 				"""
 #*******************************************************
