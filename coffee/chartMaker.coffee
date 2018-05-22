@@ -418,7 +418,7 @@ module.exports = class ChartMaker
 					<c:cat>
 						<c:numRef>
 							<c:numCache>
-								#{@getFormatCode()}
+									<c:formatCode>General</c:formatCode>
 								<c:ptCount val="#{line.data.length}"/>
 
 				"""
@@ -448,6 +448,12 @@ module.exports = class ChartMaker
 								</c:numCache>
 							</c:numRef>
 						</c:val>
+						<c:extLst>
+							<c:ext uri="{C3380CC4-5D6E-409C-BE32-E72D297353CC}"
+								xmlns:c16="http://schemas.microsoft.com/office/drawing/2014/chart">
+								<c16:uniqueId val="{00000000-9819-4A27-9D24-58E0D8F9109B}"/>
+							</c:ext>
+						</c:extLst>
 					</c:ser>
 				"""
 		#*******************************************************
