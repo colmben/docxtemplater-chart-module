@@ -1,12 +1,10 @@
-var ChartMaker, ChartManager, ChartModule, SubContent, fs;
+var ChartMaker, ChartManager, ChartModule, SubContent;
 
 SubContent = require('docxtemplater').SubContent;
 
 ChartManager = require('./chartManager');
 
 ChartMaker = require('./chartMaker');
-
-fs = require('fs');
 
 ChartModule = (function() {
 

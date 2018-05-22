@@ -2,8 +2,6 @@ SubContent = require('docxtemplater').SubContent
 ChartManager = require('./chartManager')
 ChartMaker = require('./chartMaker')
 
-fs = require('fs')
-
 class ChartModule
 	###*
 	 * self name for self-identification, variable for fast changing;
