@@ -912,106 +912,127 @@ module.exports = class ChartMaker
 							else
 								result += @getCatAx(chartType)
 						result += """
-														<c:valAx>
-															<c:axId val="#{@id2}"/>
-															<c:scaling>
-																<c:orientation val="minMax"/>
-															</c:scaling>
-															<c:axPos val="l"/>
-															<c:delete val="0"/>
-															<c:majorGridlines>
-																<c:spPr>
-																	<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
-																		<a:noFill/>
-																		<a:round/>
-																	</a:ln>
-																	<a:effectLst/>
-																</c:spPr>
-															</c:majorGridlines>
-															<c:numFmt formatCode="General" sourceLinked="1"/>
-															<c:majorTickMark val="none"/>
-															<c:minorTickMark val="none"/>
-															<c:tickLblPos val="nextTo"/>
-															<c:spPr>
-																<a:noFill/>
-																<a:ln>
-																	<a:solidFill>
-																		<a:schemeClr val="bg1">
-																			<a:lumMod val="75000"/>
-																		</a:schemeClr>
-																	</a:solidFill>
-																</a:ln>
-																<a:effectLst/>
-															</c:spPr>
-															<c:txPr>
-																<a:bodyPr rot="-60000000" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
-																<a:lstStyle/>
-																<a:p>
-																	<a:pPr>
-																		<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
-																			<a:ln>
-																				<a:noFill/>
-																			</a:ln>
-																			<a:solidFill>
-																				<a:schemeClr val="tx1"/>
-																			</a:solidFill>
-																			<a:latin typeface="+mn-lt"/>
-																			<a:ea typeface="+mn-ea"/>
-																			<a:cs typeface="+mn-cs"/>
-																		</a:defRPr>
-																	</a:pPr>
-																	<a:endParaRPr lang="en-US"/>
-																</a:p>
-															</c:txPr>
-															<c:crossAx val="#{@id1}"/>
-															<c:crosses val="autoZero"/>
-															<c:crossBetween val="midCat"/>
-														</c:valAx>
+												<c:valAx>
+													<c:axId val="#{@id2}"/>
+													#{@getScaling(@options.axis.y)}
+													<c:axPos val="l"/>
+													<c:delete val="0"/>
+													<c:majorGridlines>
 														<c:spPr>
-															<a:noFill/>
-															<a:ln>
+															<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
 																<a:noFill/>
+																<a:round/>
 															</a:ln>
 															<a:effectLst/>
 														</c:spPr>
-													</c:plotArea>
-												<c:plotVisOnly val="1"/>
-												<c:dispBlanksAs val="gap"/>
-												<c:extLst>
-													<c:ext uri="{56B9EC1D-385E-4148-901F-78D8002777C0}"
-														xmlns:c16r3="http://schemas.microsoft.com/office/drawing/2017/03/chart">
-														<c16r3:dataDisplayOptions16>
-															<c16r3:dispNaAsBlank val="1"/>
-														</c16r3:dataDisplayOptions16>
-													</c:ext>
-												</c:extLst>
-												<c:showDLblsOverMax val="0"/>
-											</c:chart>
-											<c:spPr>
-												<a:solidFill>
-													<a:schemeClr val="bg1"/>
-												</a:solidFill>
-												<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
+													</c:majorGridlines>
+													<c:numFmt formatCode="General" sourceLinked="1"/>
+													<c:majorTickMark val="none"/>
+													<c:minorTickMark val="none"/>
+													<c:tickLblPos val="nextTo"/>
+													<c:spPr>
+														<a:noFill/>
+														<a:ln>
+															<a:noFill/>
+														</a:ln>
+														<a:effectLst/>
+													</c:spPr>
+													<c:txPr>
+														<a:bodyPr rot="-60000000" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
+														<a:lstStyle/>
+														<a:p>
+															<a:pPr>
+																<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
+																	<a:solidFill>
+																		<a:schemeClr val="tx1">
+																			<a:lumMod val="65000"/>
+																			<a:lumOff val="35000"/>
+																		</a:schemeClr>
+																	</a:solidFill>
+																	<a:latin typeface="+mn-lt"/>
+																	<a:ea typeface="+mn-ea"/>
+																	<a:cs typeface="+mn-cs"/>
+																</a:defRPr>
+															</a:pPr>
+															<a:endParaRPr lang="en-US"/>
+														</a:p>
+													</c:txPr>
+													<c:crossAx val="#{@id1}"/>
+													<c:crosses val="autoZero"/>
+													<c:crossBetween val="between"/>
+												</c:valAx>
+												<c:spPr>
 													<a:noFill/>
-													<a:round/>
-												</a:ln>
-												<a:effectLst/>
-											</c:spPr>
-											<c:txPr>
-												<a:bodyPr/>
-												<a:lstStyle/>
-												<a:p>
-													<a:pPr>
-														<a:defRPr>
-															<a:solidFill>
-																<a:schemeClr val="tx1"/>
-															</a:solidFill>
-														</a:defRPr>
-													</a:pPr>
-													<a:endParaRPr lang="en-US"/>
-												</a:p>
-											</c:txPr>
-										</c:chartSpace>
+													<a:ln>
+														<a:noFill/>
+													</a:ln>
+													<a:effectLst/>
+												</c:spPr>
+											</c:plotArea>
+											<c:legend>
+												<c:overlay val="0"/>
+												<c:spPr>
+													<a:noFill/>
+													<a:ln>
+														<a:noFill/>
+													</a:ln>
+													<a:effectLst/>
+												</c:spPr>
+												<c:txPr>
+													<a:bodyPr rot="0" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
+													<a:lstStyle/>
+													<a:p>
+														<a:pPr>
+															<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
+																<a:solidFill>
+																	<a:schemeClr val="tx1">
+																		<a:lumMod val="65000"/>
+																		<a:lumOff val="35000"/>
+																	</a:schemeClr>
+																</a:solidFill>
+																<a:latin typeface="+mn-lt"/>
+																<a:ea typeface="+mn-ea"/>
+																<a:cs typeface="+mn-cs"/>
+															</a:defRPr>
+														</a:pPr>
+														<a:endParaRPr lang="en-US"/>
+													</a:p>
+												</c:txPr>
+											<c:legendPos val="#{@options.legend.position}"/>
+										</c:legend>
+										<c:plotVisOnly val="1"/>
+										<c:dispBlanksAs val="gap"/>
+										<c:extLst>
+											<c:ext uri="{56B9EC1D-385E-4148-901F-78D8002777C0}"
+												xmlns:c16r3="http://schemas.microsoft.com/office/drawing/2017/03/chart">
+												<c16r3:dataDisplayOptions16>
+													<c16r3:dispNaAsBlank val="1"/>
+												</c16r3:dataDisplayOptions16>
+											</c:ext>
+										</c:extLst>
+										<c:showDLblsOverMax val="0"/>
+									</c:chart>
+									<c:spPr>
+										<a:solidFill>
+											<a:schemeClr val="bg1"/>
+										</a:solidFill>
+										<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
+											<a:noFill/>
+											<a:round/>
+										</a:ln>
+										<a:effectLst/>
+									</c:spPr>
+									<c:txPr>
+										<a:bodyPr/>
+										<a:lstStyle/>
+										<a:p>
+											<a:pPr>
+												<a:defRPr/>
+											</a:pPr>
+											<a:endParaRPr lang="en-US"/>
+										</a:p>
+									</c:txPr>
+								</c:chartSpace>
 			"""
 			#*******************************************************
 		return result
