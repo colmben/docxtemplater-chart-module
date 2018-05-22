@@ -62,13 +62,13 @@ module.exports = ChartMaker = (function() {
         break;
       case 'line':
         result = "<c:ser>\n	<c:idx val=\"" + lineCounter + "\"/>\n	<c:order val=\"" + lineCounter + "\"/>\n<c:tx>\n	<c:strRef>\n		<c:strCache>\n			<c:ptCount val=\"1\"/>\n			<c:pt idx=\"0\">\n				<c:v>Series 1</c:v>\n			</c:pt>\n		</c:strCache>\n	</c:strRef>\n</c:tx>";
-        result += "<c:spPr>\n	<a:ln w=\"28575\" cap=\"rnd\">\n		<a:solidFill>\n			<a:schemeClr val=\"accent1\"/>\n		</a:solidFill>\n		<a:round/>\n	</a:ln>\n	<a:effectLst/>\n</c:spPr>\n<c:marker>\n	<c:symbol val=\"none\"/>\n</c:marker>\n<c:cat>\n	<c:" + this.ref + ">\n		<c:" + this.cache + ">\n			" + (this.getFormatCode()) + "\n			<c:ptCount val=\"" + line.data.length + "\"/>\n";
+        result += "<c:spPr>\n	<a:ln w=\"28575\" cap=\"rnd\">\n		<a:solidFill>\n			<a:schemeClr val=\"accent1\"/>\n		</a:solidFill>\n		<a:round/>\n	</a:ln>\n	<a:effectLst/>\n</c:spPr>\n<c:marker>\n	<c:symbol val=\"none\"/>\n</c:marker>\n<c:cat>\n	<c:numRef>\n		<c:numCache>\n			" + (this.getFormatCode()) + "\n			<c:ptCount val=\"" + line.data.length + "\"/>\n";
         ref4 = line.data;
         for (i = n = 0, len4 = ref4.length; n < len4; i = ++n) {
           elem = ref4[i];
           result += "<c:pt idx=\"" + i + "\">\n	<c:v>" + elem.x + "</c:v>\n</c:pt>";
         }
-        result += "		</c:" + this.cache + ">\n	</c:" + this.ref + ">\n</c:cat>\n<c:val>\n	<c:numRef>\n		<c:numCache>\n			<c:formatCode>General</c:formatCode>\n			<c:ptCount val=\"" + line.data.length + "\"/>";
+        result += "		</c:numCache>\n	</c:numRef>\n</c:cat>\n<c:val>\n	<c:numRef>\n		<c:numCache>\n			<c:formatCode>General</c:formatCode>\n			<c:ptCount val=\"" + line.data.length + "\"/>";
         ref5 = line.data;
         for (i = o = 0, len5 = ref5.length; o < len5; i = ++o) {
           elem = ref5[i];

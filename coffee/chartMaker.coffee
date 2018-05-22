@@ -416,8 +416,8 @@ module.exports = class ChartMaker
 						<c:symbol val="none"/>
 					</c:marker>
 					<c:cat>
-						<c:#{@ref}>
-							<c:#{@cache}>
+						<c:numRef>
+							<c:numCache>
 								#{@getFormatCode()}
 								<c:ptCount val="#{line.data.length}"/>
 
@@ -429,8 +429,8 @@ module.exports = class ChartMaker
 						</c:pt>
 					"""
 				result += """
-								</c:#{@cache}>
-							</c:#{@ref}>
+								</c:numCache>
+							</c:numRef>
 						</c:cat>
 						<c:val>
 							<c:numRef>
