@@ -186,7 +186,7 @@ module.exports = class ChartMaker
 							<c:autoTitleDeleted val="0"/>
 							<c:plotArea>
 								<c:layout/>
-								<c:lineChart>
+								<c:barChart>
 									<c:grouping val="standard"/>
 									<c:varyColors val="0"/>
 				"""
@@ -904,7 +904,7 @@ module.exports = class ChartMaker
 											<c:smooth val="0"/>
 											<c:axId val="#{@id1}"/>
 											<c:axId val="#{@id2}"/>
-										</c:lineChart>
+										</c:barChart>
 						"""
 						switch @options.axis.x.type
 							when 'date'
