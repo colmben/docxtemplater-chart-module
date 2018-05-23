@@ -137,7 +137,7 @@ module.exports = class ChartMaker
 							<c:title>
 								<c:tx>
 									<c:rich>
-										<a:bodyPr rot="0" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
+										<a:bodyPr rot="0" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="0"/>
 										<a:lstStyle/>
 										<a:p>
 											<a:pPr>
@@ -157,6 +157,14 @@ module.exports = class ChartMaker
 										</a:p>
 									</c:rich>
 								</c:tx>
+								<c:layout>
+										<c:manualLayout>
+												<c:xMode val="edge"/>
+												<c:yMode val="edge"/>
+												<c:x val="2.5434853574793888E-3"/>
+												<c:y val="3.9200313602508821E-2"/>
+										</c:manualLayout>
+								</c:layout>
 								<c:overlay val="0"/>
 								<c:spPr>
 									<a:noFill/>
@@ -165,23 +173,6 @@ module.exports = class ChartMaker
 									</a:ln>
 									<a:effectLst/>
 								</c:spPr>
-								<c:txPr>
-									<a:bodyPr rot="0" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
-									<a:lstStyle/>
-									<a:p>
-										<a:pPr>
-											<a:defRPr sz="1400" b="0" i="0" u="none" strike="noStrike" kern="1200" spc="0" baseline="0">
-												<a:solidFill>
-													<a:schemeClr val="tx1"/>
-												</a:solidFill>
-												<a:latin typeface="+mn-lt"/>
-												<a:ea typeface="+mn-ea"/>
-												<a:cs typeface="+mn-cs"/>
-											</a:defRPr>
-										</a:pPr>
-										<a:endParaRPr lang="en-US"/>
-									</a:p>
-								</c:txPr>
 							</c:title>
 							<c:autoTitleDeleted val="0"/>
 							<c:plotArea>
