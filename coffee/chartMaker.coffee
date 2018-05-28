@@ -1361,15 +1361,10 @@ module.exports = class ChartMaker
 			<a:solidFill>
 				<a:schemeClr val="bg1"/>
 			</a:solidFill>
-			<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
-				<a:solidFill>
-					<a:schemeClr val="tx1">
-						<a:lumMod val="15000"/>
-						<a:lumOff val="85000"/>
-					</a:schemeClr>
-				</a:solidFill>
-				<a:round/>
-			</a:ln>
+				<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
+					<a:noFill/>
+					<a:round/>
+				</a:ln>
 			<a:effectLst/>
 		</c:spPr>
 		<c:txPr>
