@@ -327,6 +327,7 @@ module.exports = class ChartMaker
 #					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
 
 				result += """
+					<c:numFmt formatCode="0%" sourceLinked="0"/>
 					<c:spPr>
 						<a:solidFill>
 							<a:schemeClr val="accent#{lineCounter + 1}"/>
