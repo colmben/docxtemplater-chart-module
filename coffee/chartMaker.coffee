@@ -338,7 +338,6 @@ module.exports = class ChartMaker
 					</c:spPr>
 					<c:invertIfNegative val="0"/>
 					<c:dLbls>
-						<c:numFmt formatCode="0%" sourceLinked="0"/>
 						<c:spPr>
 							<a:noFill/>
 							<a:ln>
