@@ -54,7 +54,7 @@ module.exports = ChartMaker = (function() {
           elem = ref2[i];
           result += "<c:pt idx=\"" + i + "\">\n	<c:v>" + elem.x + "</c:v>\n</c:pt>";
         }
-        result += "		</c:" + this.cache + ">\n	</c:" + this.ref + ">\n</c:cat>\n<c:val>\n	<c:numRef>\n		<c:numCache>\n			<c:formatCode>General</c:formatCode>\n			<c:ptCount val=\"" + line.data.length + "\"/>";
+        result += "		</c:" + this.cache + ">\n	</c:" + this.ref + ">\n</c:cat>\n<c:val>\n	<c:numRef>\n		<c:numCache>\n			<c:formatCode>Percentage</c:formatCode>\n			<c:ptCount val=\"" + line.data.length + "\"/>";
         ref3 = line.data;
         for (i = m = 0, len3 = ref3.length; m < len3; i = ++m) {
           elem = ref3[i];
