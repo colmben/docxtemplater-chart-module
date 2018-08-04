@@ -79,6 +79,7 @@ class ChartModule
 			grid: true,
 			border: false,
 			title: false, # works only for single-line charts
+			format: 'General', # used in bar chart only currently
 			legend: {
 				position: 'r', # 'l', 'r', 'b', 't'
 			},

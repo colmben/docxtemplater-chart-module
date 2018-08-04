@@ -100,6 +100,7 @@ ChartModule = (function() {
       grid: true,
       border: false,
       title: false,
+      format: 'General',
       legend: {
         position: 'r'
       },

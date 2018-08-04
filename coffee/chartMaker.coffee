@@ -416,7 +416,7 @@ module.exports = class ChartMaker
 						<c:val>
 							<c:numRef>
 								<c:numCache>
-									<c:formatCode>0%</c:formatCode>
+									<c:formatCode>#{@options.format}</c:formatCode>
 									<c:ptCount val="#{line.data.length}"/>
 				"""
 				for elem, i in line.data
