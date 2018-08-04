@@ -372,7 +372,7 @@ module.exports = class ChartMaker
 						<c:showVal val="1"/>
 						<c:showCatName val="0"/>
 						<c:showSerName val="0"/>
-						<c:showPercent val="0"/>
+						<c:showPercent val="1"/>
 						<c:showBubbleSize val="0"/>
 						<c:showLeaderLines val="0"/>
 						<c:extLst>
@@ -1180,7 +1180,7 @@ module.exports = class ChartMaker
 												<c:showVal val="0"/>
 												<c:showCatName val="0"/>
 												<c:showSerName val="0"/>
-												<c:showPercent val="0"/>
+												<c:showPercent val="0" />
 												<c:showBubbleSize val="0"/>
 											</c:dLbls>
 											<c:smooth val="0"/>
