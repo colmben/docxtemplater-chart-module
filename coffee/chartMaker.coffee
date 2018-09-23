@@ -1211,7 +1211,7 @@ module.exports = class ChartMaker
 															<c:numFmt formatCode="General" sourceLinked="1"/>
 															<c:majorTickMark val="none"/>
 															<c:minorTickMark val="none"/>
-															<c:tickLblPos val="low"/>
+															<c:tickLblPos val="nextTo"/>
 															<c:spPr>
 																<a:noFill/>
 																<a:ln>
