@@ -831,7 +831,7 @@ module.exports = class ChartMaker
 						<c:delete val="0"/>
 										<c:majorTickMark val="out"/>
 										<c:minorTickMark val="none"/>
-										<c:tickLblPos val="nextTo"/>
+										<c:tickLblPos val="low"/>
 										<c:spPr>
 											<a:noFill/>
 											<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
@@ -1196,9 +1196,7 @@ module.exports = class ChartMaker
 						result += """
 														<c:valAx>
 															<c:axId val="#{@id2}"/>
-															<c:scaling>
-																<c:orientation val="minMax"/>
-															</c:scaling>
+															#{@getScaling(@options.axis.y)}
 															<c:axPos val="l"/>
 															<c:delete val="0"/>
 															<c:majorGridlines>
@@ -1213,7 +1211,7 @@ module.exports = class ChartMaker
 															<c:numFmt formatCode="General" sourceLinked="1"/>
 															<c:majorTickMark val="none"/>
 															<c:minorTickMark val="none"/>
-															<c:tickLblPos val="nextTo"/>
+															<c:tickLblPos val="low"/>
 															<c:spPr>
 																<a:noFill/>
 																<a:ln>
