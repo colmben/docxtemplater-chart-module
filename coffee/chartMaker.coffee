@@ -151,7 +151,7 @@ module.exports = class ChartMaker
 												</a:defRPr>
 											</a:pPr>
 											<a:r>
-												<a:rPr lang="en-IE"/>
+												<a:rPr lang="en-IE" sz="1000"/>
 												<a:t>#{title1}</a:t>
 											</a:r>
 										</a:p>
