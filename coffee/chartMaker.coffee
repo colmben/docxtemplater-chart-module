@@ -1332,7 +1332,7 @@ module.exports = class ChartMaker
 					<a:lstStyle/>
 					<a:p>
 						<a:pPr>
-							<a:defRPr sz="1200" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
+							<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
 								<a:solidFill>
 									<a:schemeClr val="tx1">
 										<a:lumMod val="65000"/>
