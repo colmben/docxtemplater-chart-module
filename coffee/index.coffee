@@ -170,7 +170,14 @@ class ChartModule
 	getChartXml: ({chartID, width, height}) ->
 		return """
 			<w:drawing>
-				<wp:inline distB="0" distL="0" distR="0" distT="0">
+				<wp:anchor distB="0" distL="0" distR="0" distT="0">
+        <wp:simplePos x="0" y="0"/>
+        <wp:positionH relativeFrom="column">
+            <wp:posOffset>0</wp:posOffset>
+        </wp:positionH>
+        <wp:positionV relativeFrom="paragraph">
+            <wp:posOffset>0</wp:posOffset>
+        </wp:positionV>
 					<wp:extent cx="#{width}" cy="#{height}"/>
 					<wp:effectExtent b="0" l="0" r="0" t="0"/>
 					<wp:docPr id="1" name="Диаграмма 1"/>
@@ -180,7 +187,7 @@ class ChartModule
 							<c:chart r:id="rId#{chartID}" xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>
 						</a:graphicData>
 					</a:graphic>
-				</wp:inline>
+				</wp:anchor>
 			</w:drawing>
 		"""
 
