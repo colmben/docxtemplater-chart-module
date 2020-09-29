@@ -170,7 +170,7 @@ class ChartModule
 	getChartXml: ({chartID, width, height}) ->
 		return """
 			<w:drawing>
-				<wp:anchor distB="0" distL="0" distR="0" distT="0" simplePos="0" relativeHeight="251665408" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1">
+				<wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="251665408" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1">
         <wp:simplePos x="0" y="0"/>
         <wp:positionH relativeFrom="column">
             <wp:posOffset>0</wp:posOffset>
@@ -180,6 +180,7 @@ class ChartModule
         </wp:positionV>
 					<wp:extent cx="#{width}" cy="#{height}"/>
 					<wp:effectExtent b="0" l="0" r="0" t="0"/>
+        <wp:wrapTopAndBottom/>
 					<wp:docPr id="1" name="Диаграмма 1"/>
 					<wp:cNvGraphicFramePr/>
 					<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
