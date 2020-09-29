@@ -170,7 +170,7 @@ class ChartModule
 	getChartXml: ({chartID, width, height}) ->
 		return """
 			<w:drawing>
-				<wp:anchor distB="0" distL="0" distR="0" distT="0">
+				<wp:anchor distB="0" distL="0" distR="0" distT="0" simplePos="0" relativeHeight="251665408" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1">
         <wp:simplePos x="0" y="0"/>
         <wp:positionH relativeFrom="column">
             <wp:posOffset>0</wp:posOffset>
