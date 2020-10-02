@@ -1,10 +1,10 @@
 DocUtils = require('./docUtils')
 module.exports = class ChartMaker
-	getTemplateTop: (chartType, title1, title2) ->
-		switch chartType
-			#**********TEMPLATE TOP RADAR*****************************
-			when 'radar'
-				return """
+  getTemplateTop: (chartType, title1, title2) ->
+    switch chartType
+#**********TEMPLATE TOP RADAR*****************************
+      when 'radar'
+        return """
 					<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 					<c:chartSpace xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
 						<c:lang val="ru-RU"/>
@@ -16,11 +16,11 @@ module.exports = class ChartMaker
 								<c:radarStyle val="marker"/>
 								<c:varyColors val="1"/>
 				"""
-			#*******************************************************
+#*******************************************************
 
-			#**********TEMPLATE TOP BAR*****************************
-			when 'bar'
-				return """
+#**********TEMPLATE TOP BAR*****************************
+      when 'bar'
+        return """
 					<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 					<c:chartSpace
 						xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart"
@@ -51,8 +51,7 @@ module.exports = class ChartMaker
 												<a:defRPr sz="1000" b="0" i="0" u="none" strike="noStrike" kern="1200" spc="0" baseline="0">
 													<a:solidFill>
 														<a:schemeClr val="tx1">
-															<a:lumMod val="65000"/>
-															<a:lumOff val="35000"/>
+															<a:lumMod val="75000"/>
 														</a:schemeClr>
 													</a:solidFill>
 													<a:latin typeface="+mn-lt"/>
@@ -61,7 +60,13 @@ module.exports = class ChartMaker
 												</a:defRPr>
 											</a:pPr>
 											<a:r>
-												<a:rPr lang="en-US" sz="1000"/>
+												<a:rPr lang="en-US" sz="1000">
+                                <a:solidFill>
+                                    <a:schemeClr val="tx1">
+                                        <a:lumMod val="75000"/>
+                                    </a:schemeClr>
+                                </a:solidFill>
+                            </a:rPr>
 												<a:t>#{title1}</a:t>
 											</a:r>
 											<a:r>
@@ -88,8 +93,7 @@ module.exports = class ChartMaker
 											<a:defRPr sz="1000" b="0" i="0" u="none" strike="noStrike" kern="1200" spc="0" baseline="0">
 												<a:solidFill>
 													<a:schemeClr val="tx1">
-														<a:lumMod val="65000"/>
-														<a:lumOff val="35000"/>
+														<a:lumMod val="75000"/>
 													</a:schemeClr>
 												</a:solidFill>
 												<a:latin typeface="+mn-lt"/>
@@ -109,11 +113,11 @@ module.exports = class ChartMaker
 									<c:grouping val="clustered"/>
 									<c:varyColors val="0"/>
 				"""
-			#*******************************************************
+#*******************************************************
 
 #**********TEMPLATE TOP LINE*****************************
-			when 'line'
-				return """
+      when 'line'
+        return """
 					<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 					<c:chartSpace
 						xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart"
@@ -184,8 +188,8 @@ module.exports = class ChartMaker
 #*******************************************************
 
 #**********TEMPLATE TOP PIE*****************************
-			when 'pie'
-				return """
+      when 'pie'
+        return """
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <c:chartSpace
 	xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart"
@@ -216,8 +220,7 @@ module.exports = class ChartMaker
                             <a:defRPr sz="1400" b="0" i="0" u="none" strike="noStrike" kern="1200" spc="0" baseline="0">
                                 <a:solidFill>
                                     <a:schemeClr val="tx1">
-                                        <a:lumMod val="65000"/>
-                                        <a:lumOff val="35000"/>
+                                        <a:lumMod val="75000"/>
                                     </a:schemeClr>
                                 </a:solidFill>
                                 <a:latin typeface="+mn-lt"/>
@@ -226,7 +229,13 @@ module.exports = class ChartMaker
                             </a:defRPr>
                         </a:pPr>
                         <a:r>
-                            <a:rPr lang="en-IE" sz="1000"/>
+												<a:rPr lang="en-US" sz="1000">
+                                <a:solidFill>
+                                    <a:schemeClr val="tx1">
+                                        <a:lumMod val="75000"/>
+                                    </a:schemeClr>
+                                </a:solidFill>
+                            </a:rPr>
                             <a:t>#{title1}</a:t>
                         </a:r>
                     </a:p>
@@ -250,18 +259,18 @@ module.exports = class ChartMaker
 #*******************************************************
 
 
-	getFormatCode: () ->
-		if @options.axis.x.type == 'date'
-			return "<c:formatCode>m/d/yyyy</c:formatCode>" 
-		else 
-			return ""
+  getFormatCode: () ->
+    if @options.axis.x.type == 'date'
+      return "<c:formatCode>m/d/yyyy</c:formatCode>"
+    else
+      return ""
 
 
-	getLineTemplate: (chartType, line, lineCounter) ->
-		switch chartType
-			#**********LINE TEMPLATE RADAR*****************************
-			when 'radar'
-				result = """
+  getLineTemplate: (chartType, line, lineCounter) ->
+    switch chartType
+#**********LINE TEMPLATE RADAR*****************************
+      when 'radar'
+        result = """
 					<c:ser>
 						<c:idx val="#{lineCounter}"/>
 						<c:order val="#{lineCounter}"/>
@@ -269,10 +278,10 @@ module.exports = class ChartMaker
 							<c:v>#{line.name}</c:v>
 						</c:tx>
 				"""
-				if (lineCounter==1)
-					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
+        if (lineCounter == 1)
+          result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
 
-				result += """
+        result += """
 						<c:marker>
 							<c:symbol val="none"/>
 						</c:marker>
@@ -283,13 +292,13 @@ module.exports = class ChartMaker
 									<c:ptCount val="#{line.data.length}"/>
 
 				"""
-				for elem, i in line.data
-					result += """
+        for elem, i in line.data
+          result += """
 						<c:pt idx="#{i}">
 							<c:v>#{elem.x}</c:v>
 						</c:pt>
 					"""
-				result += """
+        result += """
 								</c:#{@cache}>
 							</c:#{@ref}>
 						</c:cat>
@@ -299,23 +308,23 @@ module.exports = class ChartMaker
 									<c:formatCode>General</c:formatCode>
 									<c:ptCount val="#{line.data.length}"/>
 				"""
-				for elem, i in line.data
-					result += """
+        for elem, i in line.data
+          result += """
 						<c:pt idx="#{i}">
 							<c:v>#{elem.y}</c:v>
 						</c:pt>
 					"""
-				result += """
+        result += """
 								</c:numCache>
 							</c:numRef>
 						</c:val>
 					</c:ser>
 				"""
-			#*******************************************************
+#*******************************************************
 
-			#**********LINE TEMPLATE BAR*****************************
-			when 'bar'
-				result = """
+#**********LINE TEMPLATE BAR*****************************
+      when 'bar'
+        result = """
 					<c:ser>
 						<c:idx val="#{lineCounter}"/>
 						<c:order val="#{lineCounter}"/>
@@ -323,10 +332,10 @@ module.exports = class ChartMaker
 							<c:v>#{line.name}</c:v>
 						</c:tx>
 				"""
-#				if (lineCounter==1)
-#					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
+        #				if (lineCounter==1)
+        #					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
 
-				result += """
+        result += """
 					<c:spPr>
 						<a:solidFill>
 							<a:schemeClr val="accent#{lineCounter + 1}"/>
@@ -356,7 +365,6 @@ module.exports = class ChartMaker
 										<a:solidFill>
 											<a:schemeClr val="tx1">
 												<a:lumMod val="75000"/>
-												<a:lumOff val="25000"/>
 											</a:schemeClr>
 										</a:solidFill>
 										<a:latin typeface="+mn-lt"/>
@@ -403,13 +411,13 @@ module.exports = class ChartMaker
 								<c:ptCount val="#{line.data.length}"/>
 
 				"""
-				for elem, i in line.data
-					result += """
+        for elem, i in line.data
+          result += """
 						<c:pt idx="#{i}">
 							<c:v>#{elem.x}</c:v>
 						</c:pt>
 					"""
-				result += """
+        result += """
 								</c:#{@cache}>
 							</c:#{@ref}>
 						</c:cat>
@@ -419,13 +427,13 @@ module.exports = class ChartMaker
 									<c:formatCode>#{@options.format}</c:formatCode>
 									<c:ptCount val="#{line.data.length}"/>
 				"""
-				for elem, i in line.data
-					result += """
+        for elem, i in line.data
+          result += """
 						<c:pt idx="#{i}">
 							<c:v>#{elem.y}</c:v>
 						</c:pt>
 					"""
-				result += """
+        result += """
 								</c:numCache>
 							</c:numRef>
 						</c:val>
@@ -437,11 +445,11 @@ module.exports = class ChartMaker
 						</c:extLst>
 					</c:ser>
 				"""
-		#*******************************************************
+#*******************************************************
 
 #**********LINE TEMPLATE LINE*****************************
-			when 'line'
-				result = """
+      when 'line'
+        result = """
 					<c:ser>
 						<c:idx val="#{lineCounter}"/>
 						<c:order val="#{lineCounter}"/>
@@ -456,10 +464,10 @@ module.exports = class ChartMaker
 						</c:strRef>
 					</c:tx>
 				"""
-				#				if (lineCounter==1)
-				#					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
+        #				if (lineCounter==1)
+        #					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
 
-				result += """
+        result += """
 					<c:spPr>
 						<a:ln w="28575" cap="rnd">
 							<a:solidFill>
@@ -479,13 +487,13 @@ module.exports = class ChartMaker
 								<c:ptCount val="#{line.data.length}"/>
 
 				"""
-				for elem, i in line.data
-					result += """
+        for elem, i in line.data
+          result += """
 						<c:pt idx="#{i}">
 							<c:v>#{elem.x}</c:v>
 						</c:pt>
 					"""
-				result += """
+        result += """
 								</c:numCache>
 							</c:numRef>
 						</c:cat>
@@ -495,13 +503,13 @@ module.exports = class ChartMaker
 									<c:formatCode>General</c:formatCode>
 									<c:ptCount val="#{line.data.length}"/>
 				"""
-				for elem, i in line.data
-					result += """
+        for elem, i in line.data
+          result += """
 						<c:pt idx="#{i}">
 							<c:v>#{elem.y}</c:v>
 						</c:pt>
 					"""
-				result += """
+        result += """
 								</c:numCache>
 							</c:numRef>
 						</c:val>
@@ -513,11 +521,11 @@ module.exports = class ChartMaker
 						</c:extLst>
 					</c:ser>
 				"""
-		#*******************************************************
+#*******************************************************
 
 #**********LINE TEMPLATE PIE*****************************
-			when 'pie'
-				result = """
+      when 'pie'
+        result = """
 					<c:ser>
 						<c:idx val="#{lineCounter}"/>
 						<c:order val="#{lineCounter}"/>
@@ -674,23 +682,23 @@ module.exports = class ChartMaker
 							</c:extLst>
 						</c:dLbls>
 				"""
-				#				if (lineCounter==1)
-				#					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
+        #				if (lineCounter==1)
+        #					result += "<c:spPr><a:ln w=\"28800\"><a:solidFill><a:srgbClr val=\"990000\"/></a:solidFill><a:prstDash val=\"dash\"/><a:round/></a:ln></c:spPr>\n"
 
-				result += """
+        result += """
 					<c:cat>
 						<c:strRef>
 							<c:strCache>
 								<c:ptCount val="#{line.data.length}"/>
 
 				"""
-				for elem, i in line.data
-					result += """
+        for elem, i in line.data
+          result += """
 						<c:pt idx="#{i}">
 							<c:v>#{elem.x}</c:v>
 						</c:pt>
 					"""
-				result += """
+        result += """
 								</c:strCache>
 							</c:strRef>
 						</c:cat>
@@ -700,13 +708,13 @@ module.exports = class ChartMaker
 									<c:formatCode>General</c:formatCode>
 									<c:ptCount val="#{line.data.length}"/>
 				"""
-				for elem, i in line.data
-					result += """
+        for elem, i in line.data
+          result += """
 						<c:pt idx="#{i}">
 							<c:v>#{elem.y}</c:v>
 						</c:pt>
 					"""
-				result += """
+        result += """
 								</c:numCache>
 							</c:numRef>
 						</c:val>
@@ -718,17 +726,17 @@ module.exports = class ChartMaker
 						</c:extLst>
 					</c:ser>
 				"""
-		#*******************************************************
+    #*******************************************************
 
-		return result
-
-
-	id1: 142309248,
-	id2: 142310784
+    return result
 
 
-	getScaling: (opts) ->
-		"""
+  id1: 142309248,
+  id2: 142310784
+
+
+  getScaling: (opts) ->
+    """
 		<c:scaling>
 			<c:orientation val="#{opts.orientation}"/>
 			#{if opts.max != undefined then "<c:max val=\"#{opts.max}\"/>" else ""}
@@ -737,11 +745,11 @@ module.exports = class ChartMaker
 		"""
 
 
-	getAxOpts: (chartType) ->
-		switch chartType
-			#**********getAxOpts RADAR*****************************
-			when 'radar'
-				return """
+  getAxOpts: (chartType) ->
+    switch chartType
+#**********getAxOpts RADAR*****************************
+      when 'radar'
+        return """
 				<c:axId val="#{@id1}"/>
 				#{@getScaling(@options.axis.x)}
 				<c:axPos val="b"/>
@@ -767,11 +775,11 @@ module.exports = class ChartMaker
 				<c:lblOffset val="100"/>
 				<c:noMultiLvlLbl val="1"/>
 				"""
-			#*******************************************************
+#*******************************************************
 
-			#**********getAxOpts BAR*****************************
-			when 'bar'
-				return """
+#**********getAxOpts BAR*****************************
+      when 'bar'
+        return """
 				<c:axId val="#{@id1}"/>
 				#{@getScaling(@options.axis.x)}
 				<c:axPos val="b"/>
@@ -785,8 +793,7 @@ module.exports = class ChartMaker
 					<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
 						<a:solidFill>
 							<a:schemeClr val="tx1">
-								<a:lumMod val="15000"/>
-								<a:lumOff val="85000"/>
+								<a:lumMod val="75000"/>
 							</a:schemeClr>
 						</a:solidFill>
 						<a:round/>
@@ -819,11 +826,11 @@ module.exports = class ChartMaker
 				<c:lblOffset val="100"/>
 				<c:noMultiLvlLbl val="1"/>
 			"""
-			#*******************************************************
+#*******************************************************
 
-			#**********getAxOpts LINE*****************************
-			when 'line'
-							return """
+#**********getAxOpts LINE*****************************
+      when 'line'
+        return """
 							<c:axId val="#{@id1}"/>
 							#{@getScaling(@options.axis.x)}
 							<c:axPos val="b"/>
@@ -868,48 +875,48 @@ module.exports = class ChartMaker
 							<c:lblOffset val="100"/>
 							<c:noMultiLvlLbl val="0"/>
 			"""
-			#*******************************************************
+#*******************************************************
 
 #**********getAxOpts PIE - NONE!!*****************************
 #*******************************************************
 
 
 
-	getCatAx: (chartType) ->
-		switch chartType
-			#**********getCatAx RADAR*****************************
-			when 'radar'
-				return """
+  getCatAx: (chartType) ->
+    switch chartType
+#**********getCatAx RADAR*****************************
+      when 'radar'
+        return """
 					<c:catAx>
 						#{@getAxOpts(chartType)}
 						<c:lblAlgn val="ctr"/>
 					</c:catAx>
 					"""
-			#*******************************************************
+#*******************************************************
 
-			#**********getCatAx BAR*****************************
-			when 'bar'
-				return """
+#**********getCatAx BAR*****************************
+      when 'bar'
+        return """
 					<c:catAx>
 						#{@getAxOpts(chartType)}
 						<c:lblAlgn val="ctr"/>
 					</c:catAx>
 					"""
-			#*******************************************************
+#*******************************************************
 
-			#**********getCatAx LINE*****************************
-			when 'line'
-							return """
+#**********getCatAx LINE*****************************
+      when 'line'
+        return """
 								<c:catAx>
 									#{@getAxOpts(chartType)}
 									<c:lblAlgn val="ctr"/>
 								</c:catAx>
 								"""
-			#*******************************************************
+#*******************************************************
 
 #**********getCatAx PIE (Not used!)*****************************
-			when 'pie'
-				return """
+      when 'pie'
+        return """
 								<c:catAx>
 									#{@getAxOpts(chartType)}
 									<c:lblAlgn val="ctr"/>
@@ -918,8 +925,8 @@ module.exports = class ChartMaker
 #*******************************************************
 
 
-	getDateAx: (chartType) ->
-		return """
+  getDateAx: (chartType) ->
+    return """
 		<c:dateAx>
 			#{@getAxOpts(chartType)}
 			<c:delete val="0"/>
@@ -933,24 +940,24 @@ module.exports = class ChartMaker
 		"""
 
 
-	getBorder: () ->
-		unless @options.border
-			return """
+  getBorder: () ->
+    unless @options.border
+      return """
 				<c:spPr>
 					<a:ln>
 						<a:noFill/>
 					</a:ln>
 				</c:spPr>
 			"""
-		else
-			return ''
+    else
+      return ''
 
 
-	getTemplateBottom: (chartType) ->
-		switch chartType
-			#**********TEMPLATE BOTTOM RADAR*****************************
-			when 'radar'
-				result = """
+  getTemplateBottom: (chartType) ->
+    switch chartType
+#**********TEMPLATE BOTTOM RADAR*****************************
+      when 'radar'
+        result = """
 									<c:marker val="1"/>
 										<c:dLbls>
 												<c:showLegendKey val="0"/>
@@ -964,12 +971,12 @@ module.exports = class ChartMaker
 									<c:axId val="#{@id2}"/>
 								</c:radarChart>
 				"""
-				switch @options.axis.x.type
-					when 'date'
-						result += @getDateAx(chartType)
-					else
-						result += @getCatAx(chartType)
-				result += """
+        switch @options.axis.x.type
+          when 'date'
+            result += @getDateAx(chartType)
+          else
+            result += @getCatAx(chartType)
+        result += """
 								<c:valAx>
 									<c:axId val="#{@id2}"/>
 									#{@getScaling(@options.axis.y)}
@@ -1022,11 +1029,11 @@ module.exports = class ChartMaker
 						#{@getBorder()}
 					</c:chartSpace>
 				"""
-			#*******************************************************
+#*******************************************************
 
-			#**********TEMPLATE BOTTOM BAR*****************************
-			when 'bar'
-				result = """
+#**********TEMPLATE BOTTOM BAR*****************************
+      when 'bar'
+        result = """
 									<c:dLbls>
 										<c:dLblPos val="outEnd"/>
 										<c:showLegendKey val="0"/>
@@ -1042,17 +1049,17 @@ module.exports = class ChartMaker
 									<c:axId val="#{@id2}"/>
 								</c:barChart>
 				"""
-				switch @options.axis.x.type
-					when 'date'
-						result += @getDateAx(chartType)
-					else
-						result += @getCatAx(chartType)
-				result += """
+        switch @options.axis.x.type
+          when 'date'
+            result += @getDateAx(chartType)
+          else
+            result += @getCatAx(chartType)
+        result += """
 												<c:valAx>
 													<c:axId val="#{@id2}"/>
 													#{@getScaling(@options.axis.y)}
 													<c:axPos val="l"/>
-													<c:delete val="0"/>
+													<c:delete val="1"/>
 													<c:majorGridlines>
 														<c:spPr>
 															<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
@@ -1066,33 +1073,6 @@ module.exports = class ChartMaker
 													<c:majorTickMark val="none"/>
 													<c:minorTickMark val="none"/>
 													<c:tickLblPos val="nextTo"/>
-													<c:spPr>
-														<a:noFill/>
-														<a:ln>
-															<a:noFill/>
-														</a:ln>
-														<a:effectLst/>
-													</c:spPr>
-													<c:txPr>
-														<a:bodyPr rot="-60000000" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
-														<a:lstStyle/>
-														<a:p>
-															<a:pPr>
-																<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
-																	<a:solidFill>
-																		<a:schemeClr val="tx1">
-																			<a:lumMod val="65000"/>
-																			<a:lumOff val="35000"/>
-																		</a:schemeClr>
-																	</a:solidFill>
-																	<a:latin typeface="+mn-lt"/>
-																	<a:ea typeface="+mn-ea"/>
-																	<a:cs typeface="+mn-cs"/>
-																</a:defRPr>
-															</a:pPr>
-															<a:endParaRPr lang="en-US"/>
-														</a:p>
-													</c:txPr>
 													<c:crossAx val="#{@id1}"/>
 													<c:crosses val="autoZero"/>
 													<c:crossBetween val="between"/>
@@ -1122,8 +1102,7 @@ module.exports = class ChartMaker
 															<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
 																<a:solidFill>
 																	<a:schemeClr val="tx1">
-																		<a:lumMod val="65000"/>
-																		<a:lumOff val="35000"/>
+																		<a:lumMod val="75000"/>
 																	</a:schemeClr>
 																</a:solidFill>
 																<a:latin typeface="+mn-lt"/>
@@ -1150,7 +1129,9 @@ module.exports = class ChartMaker
 									</c:chart>
 									<c:spPr>
 										<a:solidFill>
-											<a:schemeClr val="bg1"/>
+											<a:srgbClr val="FFFFFF">
+												<a:alpha val="0"/>
+											</a:srgbClr>
 										</a:solidFill>
 										<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
 											<a:noFill/>
@@ -1170,11 +1151,11 @@ module.exports = class ChartMaker
 									</c:txPr>
 								</c:chartSpace>
 			"""
-		#*******************************************************
+#*******************************************************
 
-		#**********TEMPLATE BOTTOM LINE*****************************
-			when 'line'
-						result = """
+#**********TEMPLATE BOTTOM LINE*****************************
+      when 'line'
+        result = """
 											<c:dLbls>
 												<c:showLegendKey val="0"/>
 												<c:showVal val="0"/>
@@ -1188,12 +1169,12 @@ module.exports = class ChartMaker
 											<c:axId val="#{@id2}"/>
 										</c:lineChart>
 						"""
-						switch @options.axis.x.type
-							when 'date'
-								result += @getDateAx(chartType)
-							else
-								result += @getCatAx(chartType)
-						result += """
+        switch @options.axis.x.type
+          when 'date'
+            result += @getDateAx(chartType)
+          else
+            result += @getCatAx(chartType)
+        result += """
 														<c:valAx>
 															<c:axId val="#{@id2}"/>
 															#{@getScaling(@options.axis.y)}
@@ -1293,11 +1274,11 @@ module.exports = class ChartMaker
 											</c:txPr>
 										</c:chartSpace>
 			"""
-			#*******************************************************
+#*******************************************************
 
 #**********TEMPLATE BOTTOM PIE*****************************
-			when 'pie'
-				result = """
+      when 'pie'
+        result = """
 					<c:dLbls>
 						<c:showLegendKey val="0"/>
 						<c:showVal val="0"/>
@@ -1382,27 +1363,27 @@ module.exports = class ChartMaker
 		</c:txPr>
 		</c:chartSpace>
 			"""
-		#*******************************************************
-		return result
+    #*******************************************************
+    return result
 
 
-	constructor: (@zip, @options) ->
-		if (@options.axis.x.type == 'date')
-			@ref = "numRef"
-			@cache = "numCache"
-		else
-			@ref = "strRef"
-			@cache = "strCache"
-			
+  constructor: (@zip, @options) ->
+    if (@options.axis.x.type == 'date')
+      @ref = "numRef"
+      @cache = "numCache"
+    else
+      @ref = "strRef"
+      @cache = "strCache"
 
-	makeChartFile: (chart) ->
-		result = @getTemplateTop(chart.chartType, chart.title1, chart.title2)
-		for line, i in chart.lines
-			result += @getLineTemplate(chart.chartType, line, i)
-		result += @getTemplateBottom(chart.chartType)
-		@chartContent = result
-		return @chartContent
 
-	writeFile: (path) ->
-		@zip.file("word/charts/#{path}.xml", @chartContent, {})
-		return
+  makeChartFile: (chart) ->
+    result = @getTemplateTop(chart.chartType, chart.title1, chart.title2)
+    for line, i in chart.lines
+      result += @getLineTemplate(chart.chartType, line, i)
+    result += @getTemplateBottom(chart.chartType)
+    @chartContent = result
+    return @chartContent
+
+  writeFile: (path) ->
+    @zip.file("word/charts/#{path}.xml", @chartContent, {})
+    return
