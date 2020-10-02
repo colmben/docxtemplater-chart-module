@@ -539,6 +539,11 @@ module.exports = class ChartMaker
 							</c:strCache>
 						</c:strRef>
 					</c:tx>
+					<c:spPr>
+						<a:ln>
+							<a:noFill/>
+						</a:ln>
+					</c:spPr>
 					<c:dPt>
 						<c:idx val="0"/>
 						<c:bubble3D val="0"/>
@@ -549,9 +554,7 @@ module.exports = class ChartMaker
 								</a:schemeClr>
 							</a:solidFill>
 							<a:ln w="19050">
-								<a:solidFill>
-									<a:schemeClr val="lt1"/>
-								</a:solidFill>
+								<a:noFill/>
 							</a:ln>
 							<a:effectLst/>
 						</c:spPr>
@@ -570,9 +573,7 @@ module.exports = class ChartMaker
 								<a:srgbClr val="FF0000"/>
 							</a:solidFill>
 							<a:ln w="19050">
-								<a:solidFill>
-									<a:schemeClr val="lt1"/>
-								</a:solidFill>
+								<a:noFill/>
 							</a:ln>
 							<a:effectLst/>
 						</c:spPr>
@@ -591,9 +592,7 @@ module.exports = class ChartMaker
 								<a:srgbClr val="FFC000"/>
 							</a:solidFill>
 							<a:ln w="19050">
-								<a:solidFill>
-									<a:schemeClr val="lt1"/>
-								</a:solidFill>
+								<a:noFill/>
 							</a:ln>
 							<a:effectLst/>
 						</c:spPr>
@@ -612,9 +611,7 @@ module.exports = class ChartMaker
 								<a:srgbClr val="FFFF00"/>
 							</a:solidFill>
 							<a:ln w="19050">
-								<a:solidFill>
-									<a:schemeClr val="lt1"/>
-								</a:solidFill>
+								<a:noFill/>
 							</a:ln>
 							<a:effectLst/>
 						</c:spPr>
@@ -1316,8 +1313,7 @@ module.exports = class ChartMaker
 							<a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
 								<a:solidFill>
 									<a:schemeClr val="tx1">
-										<a:lumMod val="65000"/>
-										<a:lumOff val="35000"/>
+										<a:lumMod val="75000"/>
 									</a:schemeClr>
 								</a:solidFill>
 								<a:latin typeface="+mn-lt"/>
@@ -1343,7 +1339,9 @@ module.exports = class ChartMaker
 		</c:chart>
 		<c:spPr>
 			<a:solidFill>
-				<a:schemeClr val="bg1"/>
+                <a:srgbClr val="FFFFFF">
+                    <a:alpha val="0"/>
+                </a:srgbClr>
 			</a:solidFill>
 				<a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
 					<a:noFill/>
