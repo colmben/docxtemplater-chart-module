@@ -73,9 +73,10 @@ class ChartModule
 				else
 					target[key] = next
 			return target
+#			width and height defaults are used for the radar diagrams
 		defaultOptions = {
-			width: 5486400 / 9525,
-			height: 3200400 / 9525,
+			width: 6477000 / 9525,
+			height: 3778250 / 9525,
 			grid: true,
 			border: false,
 			title: false, # works only for single-line charts
