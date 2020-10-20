@@ -96,7 +96,7 @@ ChartModule = (function() {
     };
     defaultOptions = {
       width: 6477000 / 9525,
-      height: 3778250 / 9525,
+      height: 4152900 / 9525,
       grid: true,
       border: false,
       title: false,
