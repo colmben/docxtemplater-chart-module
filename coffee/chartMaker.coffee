@@ -1019,8 +1019,16 @@ module.exports = class ChartMaker
 							</c:plotArea>
 							<c:legend>
 								<c:legendPos val="#{@options.legend.position}"/>
-								<c:layout/>
-							</c:legend>
+                <c:layout>
+                    <c:manualLayout>
+                        <c:xMode val="edge"/>
+                        <c:yMode val="edge"/>
+                        <c:x val="0.87198039215686274"/>
+                        <c:y val="2.3084761463640449E-3"/>
+                        <c:w val="0.12801960784313726"/>
+                        <c:h val="0.11471077879970885"/>
+                    </c:manualLayout>
+                </c:layout>							</c:legend>
 							<c:plotVisOnly val="1"/>
 						</c:chart>
 						#{@getBorder()}
